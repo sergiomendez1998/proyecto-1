@@ -20,13 +20,24 @@ public class Main {
         System.out.println("-------------------------------");
 
 
-        Estudiante estudiante2 = new Estudiante();
+        /*Estudiante estudiante2 = new Estudiante();
         estudiante2.setId(1);
         estudiante2.setDireccion("Zona 6");
         estudiante2.setCorreo("Perez@gmail.com");
         estudiante2.setEstado("inactivo");
-        estudianteController.modificarEstudiante(estudiante2);
-        System.out.println("-------------------------------");
-        estudianteController.listarEstudiantes();
+        estudianteController.modificarEstudiante(estudiante2);*/
+
+
+        estudianteController.listarEstudiantes().stream().forEach(estudiante1 -> {
+            System.out.println(estudiante1.getNombre());
+            System.out.println(estudiante1.getApellido());
+            System.out.println(estudiante1.getDpi());
+            System.out.println(estudiante1.getDireccion());
+            System.out.println(estudiante1.getTelefono());
+            System.out.println(estudiante1.getCorreo());
+            System.out.println(estudiante1.getFechaNacimiento());
+            System.out.println(estudiante1.getEstado());
+            System.out.println("-------------------------------");
+        });
     }
 }

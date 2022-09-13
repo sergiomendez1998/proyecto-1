@@ -1,5 +1,6 @@
 import modelo.Estudiante;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,7 @@ public class EstudianteController implements EstudianteInterface {
 
         if (encontrarEstudiante == null) {
             Estudiante.listaEstudiantes.add(estudiante);
+            System.out.println("Estudiante guardado");
         }else{
             System.out.println("El estudiante ya existe");
         }
@@ -76,8 +78,12 @@ public class EstudianteController implements EstudianteInterface {
      */
     @Override
     public List<Estudiante> listarEstudiantes() {
-
-        return Estudiante.listaEstudiantes.stream().collect(Collectors.toList());
+        List<Estudiante> ret = new ArrayList<>();
+        for(Estudiante estudiante: Estudiante.listaEstudiantes){
+            System.out.println(estudiante);
+            ret.add(estudiante);
+        }
+        return ret;
     }
 }
 
