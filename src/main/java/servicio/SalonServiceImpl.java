@@ -29,7 +29,14 @@ public class SalonServiceImpl implements SalonInterface{
 	 */
 	@Override
 	public String modificarSalon(Salon salon) {
-		return null;
+		Salon modificarSalon = buscarSalonPorId(salon.getId());
+		if(modificarSalon != null) {
+			modificarSalon.setNombre(salon.getNombre());
+			modificarSalon.setCapacidad(salon.getCapacidad());
+			return "registro modificado";
+		}else {
+			return "registro no existe";
+		}
 	}
 
 	/**
@@ -38,7 +45,13 @@ public class SalonServiceImpl implements SalonInterface{
 	 */
 	@Override
 	public String eliminarSalonPorId(int id) {
-		return null;
+		Salon eliminarSalon = buscarSalonPorId(id);
+		if(eliminarSalon != null) {
+			Salon.listaSalones.remove(eliminarSalon);
+			return "registro eliminado";
+		}else {
+			return "registro no existe";
+		}
 	}
 
 	/**
@@ -47,7 +60,9 @@ public class SalonServiceImpl implements SalonInterface{
 	 */
 	@Override
 	public Salon buscarSalonPorId(int id) {
-		return null;
+		Salon buscarSalon = Salon.listaSalones.stream().filter(sal->sal.getId() == id)
+				.findFirst().orElse(null);
+		return buscarSalon;
 	}
 
 	/**
@@ -55,6 +70,10 @@ public class SalonServiceImpl implements SalonInterface{
 	 */
 	@Override
 	public List<Salon> salones() {
-		return null;
+		try {
+			return Salon.listaSalones;
+		}catch (Exception e){
+			return null;
+		}
 	}
 }
